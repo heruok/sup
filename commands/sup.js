@@ -8,13 +8,19 @@ module.exports =  class Sup extends Command {
     }
 
     static action (message) {
-        let voiceChannel = message.guild.channels.cache
-        .filter(function (channel) { return channel.type === 'voice' })
-        .first()
-        voiceChannel
-        .join()
-        .then(function (connection) {
-            connection.play('./sup.mp3')
-        })
+        if(message.member.voiceChannel)
+        {
+            if(!message.guild.voiceConnection)
+            {
+                message.member.voiceChannel.join()
+                    .then(function (connection) {
+                        connection.play('./sup.mp3')
+                    })
+            }
+         }
+         else
+         {
+             message.reply("Y'a personne les fdp");
+         }
     }
 }
