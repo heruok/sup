@@ -8,19 +8,15 @@ module.exports =  class Sup extends Command {
     }
 
     static action (message) {
-        if(message.member.voiceChannel)
-        {
-            if(!message.guild.voiceConnection)
-            {
-                message.member.voiceChannel.join()
-                    .then(function (connection) {
-                        connection.play('./sup.mp3')
-                    })
-            }
-         }
-         else
-         {
-             message.reply("Y'a personne les fdp");
-         }
+        const { voice } = message.member
+        
+        if (!voice.channelID) {
+            message.reply("Joue pas avec mes couilles..")
+            return
+        }
+        voice.channel.join()
+        .then(function (connection) {
+            connection.play('./sup.mp3')
+        })
     }
 }
