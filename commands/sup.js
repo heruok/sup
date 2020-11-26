@@ -4,7 +4,7 @@ module.exports =  class Sup extends Command {
 
 
     static match (message) {
-        return message.content.startsWith('!sup')
+        return message.content.startsWith('tg')
     }
 
     static action (message) {
@@ -16,7 +16,11 @@ module.exports =  class Sup extends Command {
         }
         voice.channel.join()
         .then(function (connection) {
-            connection.play('./sup.mp3')
+            connection
+                .play('./sup.mp3')
+                .on('end', function () {
+                    connection.disconnect()
+                })
         })
     }
 }
