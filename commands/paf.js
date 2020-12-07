@@ -1,6 +1,6 @@
 const Command = require('./command')
 
-module.exports =  class Alex extends Command {
+module.exports =  class Paf extends Command {
 
 
     static match (message) {
