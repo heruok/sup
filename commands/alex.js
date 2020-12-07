@@ -17,7 +17,7 @@ module.exports =  class Alex extends Command {
         voice.channel.join()
         .then(function (connection) {
             connection
-                .play('./gay.mp3')
+                .play('./alex.mp3')
                 .on('end', function () {
                     connection.disconnect()
                 })
