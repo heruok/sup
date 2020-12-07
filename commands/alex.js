@@ -4,7 +4,7 @@ module.exports =  class Alex extends Command {
 
 
     static match (message) {
-        return (message.content.startsWith('alex') || message.content.startsWith('Alex'))
+        return message.content.startsWith('alex')
     }
 
     static action (message) {
